@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --vex-obsidian: #000000;
+    --vex-matte: #ffffff;
+    --vex-slate: #9ca3af;
+    --vex-slate-light: #d1d5db;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--vex-obsidian);
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--vex-obsidian);
+    color: var(--vex-matte);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  #root {
+    font-family: 'Inter', sans-serif;
+    background-color: transparent;
+    color: var(--vex-matte);
+  }
+}
+
+@layer components {
+  .ambient-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: var(--vex-obsidian);
+    pointer-events: none;
+  }
+
+  .ambient-mesh {
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 96px 96px;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 15%, transparent 72%);
+  }
+
+  .ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+  }
+
+  .ambient-glow--primary {
+    width: 55vw;
+    height: 55vw;
+    top: 10%;
+    left: -10%;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .ambient-glow--secondary {
+    width: 45vw;
+    height: 45vw;
+    bottom: 5%;
+    right: -8%;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .cinematic-edge-vignette {
+    box-shadow: inset 0 0 220px 80px rgba(0, 0, 0, 0.5);
+  }
+
+  .liquid-glass {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.04) 40%,
+      rgba(255, 255, 255, 0) 55%,
+      rgba(255, 255, 255, 0.08) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .liquid-glass-float {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow:
+      0 40px 80px -24px rgba(0, 0, 0, 0.95),
+      0 0 0 1px rgba(255, 255, 255, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass-float::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.03) 48%,
+      rgba(255, 255, 255, 0) 58%,
+      rgba(255, 255, 255, 0.07) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
